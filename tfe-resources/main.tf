@@ -77,7 +77,7 @@ resource "tfe_workspace" "ws-04" {
   organization      = var.tfe_organization
   queue_all_runs    = false
   project_id        = tfe_project.ps-04.id
-  # working_directory = ""
+  working_directory = "/resources"
   vcs_repo {
     branch         = var.tfe_branch
     identifier     = "debasis112/aws-cloud-setup"
