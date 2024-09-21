@@ -1,7 +1,7 @@
 variable "tfe_organization" {
   description = "Organization name for Terraform Cloud."
   type        = string
-  default     = "debasis-project-dissertation"
+  default     = "2020WA86256-debasis-project"
 }
 
 variable "TFE_MAIL_ID" {
