@@ -4,12 +4,12 @@ variable "tfe_organization" {
   default     = "debasis-project-dissertation"
 }
 
-variable "tfe_mail_id" {
+variable "TFE_MAIL_ID" {
   type        = string
   description = "The email ID for Terraform Cloud"
 }
 
-variable "tfe_api_token" {
+variable "TFE_API_TOKEN" {
   type        = string
   description = "The API token for Terraform Cloud"
   sensitive   = true
