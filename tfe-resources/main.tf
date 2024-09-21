@@ -76,7 +76,7 @@ resource "tfe_workspace" "ws-04" {
   name              = "aws-cloud-setup-ws-04"
   organization      = var.tfe_organization
   queue_all_runs    = false
-  project_id        = tfe_project.ps-03.id
+  project_id        = tfe_project.ps-04.id
   # working_directory = ""
   vcs_repo {
     branch         = var.tfe_branch
