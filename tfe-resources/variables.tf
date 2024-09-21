@@ -1,16 +1,22 @@
 variable "tfe_organization" {
   description = "Organization name for Terraform Cloud."
   type        = string
-  default = "debasis-project-dissertation"
+  default     = "debasis-project-dissertation"
 }
 
-variable "tfe_mail_id" {
+variable "TFE_MAIL_ID" {
   type        = string
   description = "The email ID for Terraform Cloud"
 }
 
-variable "tfe_api_token" {
+variable "TFE_API_TOKEN" {
   type        = string
   description = "The API token for Terraform Cloud"
   sensitive   = true
 }
+
+# variable "tfe_gh_token" {
+#   type        = string
+#   description = "The PAT token for GitHub"
+#   sensitive   = true
+# }
