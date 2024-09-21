@@ -1,11 +1,12 @@
 // tfe auth creation
 resource "tfe_oauth_client" "auth-01" {
   organization     = var.tfe_organization
-  api_url          = "https://api.github.com"
-  http_url         = "https://github.com"
+  api_url          = var.api_url
+  http_url         = var.http_url
   oauth_token      = var.TFE_GH_TOKEN
-  service_provider = "github"
+  service_provider = var.service_provider
 }
+
 ######################
 # tfe Projects lists #
 ######################
@@ -24,10 +25,10 @@ resource "tfe_project" "ps-03" {
   name         = "azure-cloud-setup-sql"
 }
 
-resource "tfe_project" "ps-04" {
-  organization = var.tfe_organization
-  name         = "aws-cloud-setup"
-}
+# resource "tfe_project" "ps-04" {
+#   organization = var.tfe_organization
+#   name         = "aws-cloud-setup"
+# }
 
 #######################
 # tfe Workspace lists #
@@ -72,15 +73,15 @@ resource "tfe_workspace" "ws-03" {
   }
 }
 
-resource "tfe_workspace" "ws-04" {
-  name              = "aws-cloud-setup-ws-04"
-  organization      = var.tfe_organization
-  queue_all_runs    = false
-  project_id        = tfe_project.ps-04.id
-  working_directory = "/resources"
-  vcs_repo {
-    branch         = var.tfe_branch
-    identifier     = "debasis112/aws-cloud-setup"
-    oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
-  }
-}
+# resource "tfe_workspace" "ws-04" {
+#   name              = "aws-cloud-setup-ws-04"
+#   organization      = var.tfe_organization
+#   queue_all_runs    = false
+#   project_id        = tfe_project.ps-04.id
+#   working_directory = "/resources"
+#   vcs_repo {
+#     branch         = var.tfe_branch
+#     identifier     = "debasis112/aws-cloud-setup"
+#     oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
+#   }
+# }
