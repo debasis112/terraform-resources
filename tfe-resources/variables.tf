@@ -14,3 +14,9 @@ variable "tfe_api_token" {
   description = "The API token for Terraform Cloud"
   sensitive   = true
 }
+
+# variable "tfe_gh_token" {
+#   type        = string
+#   description = "The PAT token for GitHub"
+#   sensitive   = true
+# }
