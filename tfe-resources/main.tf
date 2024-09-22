@@ -7,6 +7,13 @@ resource "tfe_oauth_client" "auth-01" {
   service_provider = var.service_provider
 }
 
+resource "tfe_oauth_client" "auth-02" {
+  organization     = var.tfe_organization
+  api_url          = var.api_url
+  http_url         = var.http_url
+  oauth_token      = var.TFE_GH_TOKEN
+  service_provider = var.service_provider
+}
 ######################
 # tfe Projects lists #
 ######################
@@ -79,18 +86,18 @@ resource "tfe_workspace" "ws-03" {
 }
 
 
-# resource "tfe_workspace" "ws-04" {
-#   name              = "aws-cloud-resources-ws-04"
-#   organization      = var.tfe_organization
-#   queue_all_runs    = false
-#   project_id        = tfe_project.ps-04.id
-#   working_directory = "/resources"
-#   vcs_repo {
-#     branch         = var.tfe_branch
-#     identifier     = "debasis112/aws-cloud-resources"
-#     oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
-#   }
-# }
+resource "tfe_workspace" "ws-04" {
+  name              = "aws-cloud-resources-ws-04"
+  organization      = var.tfe_organization
+  queue_all_runs    = false
+  project_id        = tfe_project.ps-04.id
+  working_directory = "/resources"
+  vcs_repo {
+    branch         = var.tfe_branch
+    identifier     = "debasis112/aws-cloud-resources"
+    oauth_token_id = tfe_oauth_client.auth-02.oauth_token_id
+  }
+}
 
 resource "tfe_workspace" "ws-05" {
   name              = "cloud-secrets-ws-05"
@@ -101,6 +108,6 @@ resource "tfe_workspace" "ws-05" {
   vcs_repo {
     branch         = var.tfe_branch
     identifier     = "debasis112/cloud-secrets"
-    oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
+    oauth_token_id = tfe_oauth_client.auth-02.oauth_token_id
   }
 }
