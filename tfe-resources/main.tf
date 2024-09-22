@@ -74,15 +74,15 @@ resource "tfe_workspace" "ws-03" {
 }
 
 
-# resource "tfe_workspace" "ws-04" {
-#   name              = "aws-cloud-setup-ws-04"
-#   organization      = var.tfe_organization
-#   queue_all_runs    = false
-#   project_id        = tfe_project.ps-04.id
-#   working_directory = "/resources"
-#   vcs_repo {
-#     branch         = var.tfe_branch
-#     identifier     = "debasis112/aws-cloud-resources"
-#     oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
-#   }
-# }
+resource "tfe_workspace" "ws-04" {
+  name              = "aws-cloud-resources-ws-04"
+  organization      = var.tfe_organization
+  queue_all_runs    = false
+  project_id        = tfe_project.ps-04.id
+  working_directory = "/resources"
+  vcs_repo {
+    branch         = var.tfe_branch
+    identifier     = "debasis112/aws-cloud-resources"
+    oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
+  }
+}
