@@ -17,17 +17,7 @@ resource "tfe_project" "ps-01" {
 
 resource "tfe_project" "ps-02" {
   organization = var.tfe_organization
-  name         = "azure-cloud-setup-rsg"
-}
-
-resource "tfe_project" "ps-03" {
-  organization = var.tfe_organization
-  name         = "azure-cloud-setup-sql"
-}
-
-resource "tfe_project" "ps-04" {
-  organization = var.tfe_organization
-  name         = "aws-cloud-resources"
+  name         = "azure-cloud-setup"
 }
 
 #######################
@@ -48,24 +38,11 @@ resource "tfe_workspace" "ws-01" {
 }
 
 resource "tfe_workspace" "ws-02" {
-  name              = "azure-cloud-setup-rsg-ws-02"
+  name              = "azure-cloud-setup-ws-02"
   organization      = var.tfe_organization
   queue_all_runs    = false
   project_id        = tfe_project.ps-02.id
-  working_directory = "/resource-group"
-  vcs_repo {
-    branch         = var.tfe_branch
-    identifier     = "debasis112/azure-cloud-setup"
-    oauth_token_id = tfe_oauth_client.auth-01.oauth_token_id
-  }
-}
-
-resource "tfe_workspace" "ws-03" {
-  name              = "azure-cloud-setup-sql-ws-03"
-  organization      = var.tfe_organization
-  queue_all_runs    = false
-  project_id        = tfe_project.ps-03.id
-  working_directory = "/ms-sql"
+  working_directory = "/resources"
   vcs_repo {
     branch         = var.tfe_branch
     identifier     = "debasis112/azure-cloud-setup"
