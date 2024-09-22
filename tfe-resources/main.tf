@@ -30,11 +30,6 @@ resource "tfe_project" "ps-04" {
   name         = "aws-cloud-resources"
 }
 
-resource "tfe_project" "ps-05" {
-  organization = var.tfe_organization
-  name         = "cloud-secrets"
-}
-
 #######################
 # tfe Workspace lists #
 #######################
